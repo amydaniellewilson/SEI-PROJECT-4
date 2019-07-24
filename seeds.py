@@ -52,14 +52,16 @@ with app.app_context():
         address='123 Tech Street, London',
         postcode='E1 1AB',
         industry='Software Engineering',
-        details='There will be a talk from esteemed Senior Developer Joss Farmer followed by cheese, wine and networking. All levels welcome, please join us for a fantastic evening.'
+        details='There will be a talk from esteemed Senior Developer Joss Farmer followed by cheese, wine and networking. All levels welcome, please join us for a fantastic evening.',
+        creator=joss_farmer
     )
 
     # COMMENTS
 
     comment_one = Comment(
         content='What a great event.',
-        event=women_in_tech
+        event=women_in_tech,
+        user=amy_wilson
     )
 
     db.session.add(software_engineering)

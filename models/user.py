@@ -3,7 +3,6 @@ from marshmallow import fields
 from .base import BaseModel, BaseSchema
 # pylint: disable=W0611
 from .skill import Skill, SkillSchema
-from .event import Event
 
 user_skills = db.Table(
     'user_skills',
@@ -32,3 +31,4 @@ class UserSchema(ma.ModelSchema, BaseSchema):
         model = User
 
     skills = fields.Nested('SkillSchema', many=True, exclude=('created_at', 'updated_at'))
+    created_events = fields.Nested('EventSchema', many=True, only=('name', 'id'))
