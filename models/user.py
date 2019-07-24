@@ -32,3 +32,7 @@ class UserSchema(ma.ModelSchema, BaseSchema):
 
     skills = fields.Nested('SkillSchema', many=True, exclude=('created_at', 'updated_at'))
     created_events = fields.Nested('EventSchema', many=True, only=('name', 'id'))
+
+# class UserComment(db.Model, BaseModel):
+#
+#     __tablename__ = ''

@@ -20,22 +20,22 @@ class EventSchema(ma.ModelSchema, BaseSchema):
     class Meta:
         model = Event
 
-    comments = fields.Nested('CommentSchema', many=True, exclude=('created_at', 'updated_at', 'event'))
+    event_comments = fields.Nested('EventCommentSchema', many=True, exclude=('created_at', 'updated_at', 'event'))
     creator = fields.Nested('UserSchema', only=('id', 'username'))
 
-class Comment(db.Model, BaseModel):
+class EventComment(db.Model, BaseModel):
 
-    __tablename__ = 'comments'
+    __tablename__ = 'event_comments'
 
     content = db.Column(db.Text, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    user = db.relationship('User', backref='comments')
+    user = db.relationship('User', backref='event_comments')
     event_id = db.Column(db.Integer, db.ForeignKey('events.id'))
-    event = db.relationship('Event', backref='comments')
+    event = db.relationship('Event', backref='event_comments')
 
-class CommentSchema(ma.ModelSchema, BaseSchema):
+class EventCommentSchema(ma.ModelSchema, BaseSchema):
 
     class Meta:
-        model = Comment
+        model = EventComment
 
     user = fields.Nested('UserSchema', only=('id', 'username'))

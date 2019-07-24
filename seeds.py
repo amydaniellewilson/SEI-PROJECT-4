@@ -1,7 +1,7 @@
 from app import app, db
 from models.user import User
 from models.skill import Skill
-from models.event import Event, Comment
+from models.event import Event, EventComment
 
 with app.app_context():
     db.drop_all()
@@ -58,7 +58,7 @@ with app.app_context():
 
     # COMMENTS
 
-    comment_one = Comment(
+    event_comment_one = EventComment(
         content='What a great event.',
         event=women_in_tech,
         user=amy_wilson
@@ -73,6 +73,6 @@ with app.app_context():
     db.session.add(amy_wilson)
     db.session.add(joss_farmer)
     db.session.add(women_in_tech)
-    db.session.add(comment_one)
+    db.session.add(event_comment_one)
 
     db.session.commit()
