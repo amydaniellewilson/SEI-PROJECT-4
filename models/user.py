@@ -1,6 +1,9 @@
+from datetime import datetime, timedelta
+import jwt
 from sqlalchemy.ext.hybrid import hybrid_property
 from marshmallow import fields, validates_schema, ValidationError
 from app import db, ma, bcrypt
+from config.environment import secret
 from .base import BaseModel, BaseSchema
 # pylint: disable=W0611
 from .skill import Skill, SkillSchema
@@ -36,6 +39,21 @@ class User(db.Model, BaseModel):
 
     def validate_password(self, plaintext):
         return bcrypt.check_password_hash(self.password_hash, plaintext)
+
+    def generate_token(self):
+        payload = {
+            'exp': datetime.utcnow() + timedelta(days=1),
+            'iat': datetime.utcnow(),
+            'sub': self.id
+        }
+
+        token = jwt.encode(
+            payload,
+            secret,
+            'HS256'
+        ).decode('utf-8')
+
+        return token
 
 class UserSchema(ma.ModelSchema, BaseSchema):
 
