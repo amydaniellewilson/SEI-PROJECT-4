@@ -35,8 +35,7 @@ class User(db.Model, BaseModel):
         self.password_hash = bcrypt.generate_password_hash(plaintext).decode('utf-8')
 
     def validate_password(self, plaintext):
-        return
-        bcrypt.check_password_hash(self.password_hash, plaintext)
+        return bcrypt.check_password_hash(self.password_hash, plaintext)
 
 class UserSchema(ma.ModelSchema, BaseSchema):
 
@@ -49,10 +48,14 @@ class UserSchema(ma.ModelSchema, BaseSchema):
                 'password_confirmation'
             )
 
+    password = fields.String(required=True)
+    password_confirmation = fields.String(required=True)
+
     class Meta:
         model = User
+        exclude = ('password_hash',)
 
-    skills = fields.Nested('SkillSchema', many=True, exclude=('created_at', 'updated_at', 'password_hash',))
+    skills = fields.Nested('SkillSchema', many=True, exclude=('created_at', 'updated_at',))
     created_events = fields.Nested('EventSchema', many=True, only=('name', 'id'))
 
 # class UserComment(db.Model, BaseModel):

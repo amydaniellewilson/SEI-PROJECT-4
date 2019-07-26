@@ -1,7 +1,9 @@
 from app import app, db
-from models.user import User
+from models.user import User, UserSchema
 from models.skill import Skill
 from models.event import Event, EventComment
+
+user_schema = UserSchema()
 
 with app.app_context():
     db.drop_all()
@@ -18,162 +20,222 @@ with app.app_context():
     ruby = Skill(skill='Ruby')
     mentoring = Skill(skill='Mentoring')
 
-    # USERS
+    # USER PROFILES
 
-    amy_wilson = User(
-        username='amywilson',
-        email='amy@email',
-        password_hash='pass',
-        name='Amy Wilson',
-        occupation='Junior Software Engineer',
-        industry='Software Engineering',
-        location='London, United Kingdom',
-        description='Currently studying Software Engineering at General Assembly in London. I will be embarking on my career within the tech industry from September 2019',
-        image='https://i.imgur.com/9gKMYKc.jpg?1',
-        skills=[software_engineering]
-    )
+    amy_wilson, errors = user_schema.load({
+        'username': 'amywilson',
+        'email': 'amy@email',
+        'password': 'pass',
+        'password_confirmation': 'pass',
+        'name': 'Amy Wilson',
+        'occupation': 'Junior Software Engineer',
+        'industry': 'Software Engineering',
+        'location': 'London, United Kingdom',
+        'description': 'Currently studying Software Engineering at General Assembly in London. I will be embarking on my career within the tech industry from September 2019',
+        'image': 'https://i.imgur.com/9gKMYKc.jpg?1'
+    })
 
-    joss_farmer = User(
-        username='jossfarmer',
-        email='joss@email',
-        password_hash='pass',
-        name='Joss Farmer',
-        occupation='Senior Software Engineer',
-        industry='Software Engineering',
-        location='London, United Kingdom',
-        description='I have worked in the tech industry for 25 years and currently hold a Senior Position at Sky.',
-        image='https://i.imgur.com/Z8qAnLh.jpg?1',
-        skills=[software_engineering, html, css, javascript, react, python, mentoring]
-    )
+    if errors:
+        raise Exception(errors)
 
-    ines_alston = User(
-        username='inesalston',
-        email='ines@email',
-        password_hash='pass',
-        name='Ines Alston',
-        occupation='Junior Software Engineer',
-        industry='Software Engineering',
-        location='London, United Kingdom',
-        description='I have recently graduated from a software engineering bootcamp. I am looking for a mentor to help me progress.',
-        image='https://i.imgur.com/OtkwJs9.jpg?1',
-        skills=[software_engineering, html, css, javascript, react, python]
-    )
+    amy_wilson.skills = [software_engineering]
 
-    crystal_crowther = User(
-        username='crystal_crowther',
-        email='crystal@email',
-        password_hash='pass',
-        name='Crystal Crowther',
-        occupation='Senior Software Engineer',
-        industry='Software Engineering',
-        location='London, United Kingdom',
-        description='After 10 years in the industy, I enjoy mentoring Junior Engineers to help them progress in their careers. I own my own start up tech company. ',
-        image='https://i.imgur.com/QOTx7EU.jpg?1',
-        skills=[software_engineering, html, css, javascript, react, python, ruby, mentoring]
-    )
+    joss_farmer, errors = user_schema.load({
+        'username': 'jossfarmer',
+        'email': 'joss@email',
+        'password': 'pass',
+        'password_confirmation': 'pass',
+        'name': 'Joss Farmer',
+        'occupation': 'Senior Software Engineer',
+        'industry': 'Software Engineering',
+        'location': 'London, United Kingdom',
+        'description': 'I have worked in the tech industry for 25 years and currently hold a Senior Position at Sky.',
+        'image': 'https://i.imgur.com/Z8qAnLh.jpg?1'
+    })
 
-    evie_rose_whelan = User(
-        username='evie_rose_whelan',
-        email='evie@email',
-        password_hash='pass',
-        name='Evie-Rose Whelan',
-        occupation='Software Engineer',
-        industry='Software Engineering',
-        location='London, United Kingdom',
-        description='I completed a Computer Science Degree and have been working in the tech industry for 5 years. ',
-        image='https://i.imgur.com/J8gtJj2.jpg?1',
-        skills=[software_engineering, html, css, javascript, ruby, mentoring]
-    )
+    if errors:
+        raise Exception(errors)
 
-    kiki_farley = User(
-        username='kiki_farley',
-        email='kiki@email',
-        password_hash='pass',
-        name='Kiki Farley',
-        occupation='Software Engineer',
-        industry='Software Engineering',
-        location='London, United Kingdom',
-        description='I love coding, it\'s my passion and I have been lucky enough to have been coding professionally for the last 3 years. I am looking to do some coaching for new graduates to help the next wave of women in tech like I was helped myself.  ',
-        image='https://i.imgur.com/7J7ILF9.jpg?1',
-        skills=[software_engineering, html, css, javascript, react, mentoring]
-    )
+    joss_farmer.skills = [software_engineering, html, css, javascript, react, python, mentoring]
 
-    onur_soto = User(
-        username='onur_soto',
-        email='onur@email',
-        password_hash='pass',
-        name='Onur Soto',
-        occupation='Student',
-        industry='Software Engineering',
-        location='London, United Kingdom',
-        description='I am starting a software engineering bootcamp at General Assembly and am looking to meet up with other women in this industry to help with my my learning process.',
-        image='https://i.imgur.com/NS58G0a.jpg?1'
-    )
+    ines_alston, errors = user_schema.load({
+        'username': 'inesalston',
+        'email': 'ines@email',
+        'password': 'pass',
+        'password_confirmation': 'pass',
+        'name': 'Ines Alston',
+        'occupation': 'Junior Software Engineer',
+        'industry': 'Software Engineering',
+        'location': 'London, United Kingdom',
+        'description': 'I have recently graduated from a software engineering bootcamp. I am looking for a mentor to help me progress.',
+        'image': 'https://i.imgur.com/OtkwJs9.jpg?1'
+    })
 
-    marie_middleton = User(
-        username='marie_middleton',
-        email='marie@email',
-        password_hash='pass',
-        name='Marie Middleton',
-        occupation='Student',
-        industry='Software Engineering',
-        location='London, United Kingdom',
-        description='I am 3 weeks into a 12 week coding bootcamp and just love coding so much. It\'s something I am enjoying studying but also doing for fun. ',
-        image='https://i.imgur.com/WvsRfVg.jpg',
-        skills=[html, css]
-    )
+    if errors:
+        raise Exception(errors)
 
-    cadence_molloy = User(
-        username='cadence_molloy',
-        email='cadence@email',
-        password_hash='pass',
-        name='Cadence Molloy',
-        occupation='Senior Software Engineer',
-        industry='Software Engineering',
-        location='London, United Kingdom',
-        description='I have been in the software engineering and tech industry for 15 years since I was 16. It\'s not just my job, it\'s my passion.',
-        image='https://i.imgur.com/OWNQbt2.jpg?1',
-        skills=[html, css, javascript, react, ruby, software_engineering, python]
-    )
+    ines_alston.skills = [software_engineering, html, css, javascript, react, python]
 
-    lacie_mae_blackwell = User(
-        username='lacie_mae_blackwell',
-        email='lacie@email',
-        password_hash='pass',
-        name='Lacie-Mae Blackwell',
-        occupation='Software Engineer',
-        industry='Software Engineering',
-        location='London, United Kingdom',
-        description='I am fairly new in the world of tech, I have been working at my first software engineering job for just under 12 months and enjoy it immesly. I\'d love to meet up with some other women in tech as my currwent workplace is mainly male dominated. I also have a passion for art and the theatre.',
-        image='https://i.imgur.com/fDLABkw.jpg',
-        skills=[html, css, javascript, react]
-    )
+    crystal_crowther, errors = user_schema.load({
+        'username': 'crystal_crowther',
+        'email': 'crystal@email',
+        'password': 'pass',
+        'password_confirmation': 'pass',
+        'name': 'Crystal Crowther',
+        'occupation': 'Senior Software Engineer',
+        'industry': 'Software Engineering',
+        'location': 'London, United Kingdom',
+        'description': 'After 10 years in the industy, I enjoy mentoring Junior Engineers to help them progress in their careers. I own my own start up tech company. ',
+        'image': 'https://i.imgur.com/QOTx7EU.jpg?1'
+    })
 
-    meera_wu = User(
-        username='meera_wu',
-        email='meera@email',
-        password_hash='pass',
-        name='Meera Wu',
-        occupation='Senior Software Engineer',
-        industry='Software Engineering',
-        location='London, United Kingdom',
-        description='I own a tech company in the center of London that specialises in the design of websites for High Dental Practices. ',
-        image='https://i.imgur.com/ppL7NFu.jpg',
-        skills=[html, css, javascript, react, python, mentoring, software_engineering, mentoring]
-    )
+    if errors:
+        raise Exception(errors)
 
-    hallie_lim = User(
-        username='hallie_lim',
-        email='hallie@email',
-        password_hash='pass',
-        name='Hallie Lim',
-        occupation='Junior Software Engineer',
-        industry='Software Engineering',
-        location='London, United Kingdom',
-        description='Looking to connect with and be inspired by other women in tech.',
-        image='https://i.imgur.com/KV90Jra.jpg?1',
-        skills=[html, css, javascript, react, python, software_engineering]
-    )
+    crystal_crowther.skills = [software_engineering, html, css, javascript, react, python, ruby, mentoring]
+
+
+    evie_rose_whelan, errors = user_schema.load({
+        'username': 'evie_rose_whelan',
+        'email': 'evie@email',
+        'password': 'pass',
+        'password_confirmation': 'pass',
+        'name': 'Evie-Rose Whelan',
+        'occupation': 'Software Engineer',
+        'industry': 'Software Engineering',
+        'location': 'London, United Kingdom',
+        'description': 'I completed a Computer Science Degree and have been working in the tech industry for 5 years. ',
+        'image': 'https://i.imgur.com/J8gtJj2.jpg?1'
+    })
+
+    if errors:
+        raise Exception(errors)
+
+    evie_rose_whelan.skills = [software_engineering, html, css, javascript, ruby, mentoring]
+
+    kiki_farley, errors = user_schema.load({
+        'username': 'kiki_farley',
+        'email': 'kiki@email',
+        'password': 'pass',
+        'password_confirmation': 'pass',
+        'name': 'Kiki Farley',
+        'occupation': 'Software Engineer',
+        'industry': 'Software Engineering',
+        'location': 'London, United Kingdom',
+        'description': 'I love coding, it\'s my passion and I have been lucky enough to have been coding professionally for the last 3 years. I am looking to do some coaching for new graduates to help the next wave of women in tech like I was helped myself.  ',
+        'image': 'https://i.imgur.com/7J7ILF9.jpg?1'
+    })
+
+    if errors:
+        raise Exception(errors)
+
+    kiki_farley.skills = [software_engineering, html, css, javascript, react, mentoring]
+
+    onur_soto, errors = user_schema.load({
+        'username': 'onur_soto',
+        'email': 'onur@email',
+        'password': 'pass',
+        'password_confirmation': 'pass',
+        'name': 'Onur Soto',
+        'occupation': 'Student',
+        'industry': 'Software Engineering',
+        'location': 'London, United Kingdom',
+        'description': 'I am starting a software engineering bootcamp at General Assembly and am looking to meet up with other women in this industry to help with my my learning process.',
+        'image': 'https://i.imgur.com/NS58G0a.jpg?1'
+    })
+
+    if errors:
+        raise Exception(errors)
+
+    marie_middleton, errors = user_schema.load({
+        'username': 'marie_middleton',
+        'email': 'marie@email',
+        'password': 'pass',
+        'password_confirmation': 'pass',
+        'name': 'Marie Middleton',
+        'occupation': 'Student',
+        'industry': 'Software Engineering',
+        'location': 'London, United Kingdom',
+        'description': 'I am 3 weeks into a 12 week coding bootcamp and just love coding so much. It\'s something I am enjoying studying but also doing for fun. ',
+        'image': 'https://i.imgur.com/WvsRfVg.jpg'
+    })
+
+    if errors:
+        raise Exception(errors)
+
+    marie_middleton.skills = [html, css]
+
+    cadence_molloy, errors = user_schema.load({
+        'username': 'cadence_molloy',
+        'email': 'cadence@email',
+        'password': 'pass',
+        'password_confirmation': 'pass',
+        'name': 'Cadence Molloy',
+        'occupation': 'Senior Software Engineer',
+        'industry': 'Software Engineering',
+        'location': 'London, United Kingdom',
+        'description': 'I have been in the software engineering and tech industry for 15 years since I was 16. It\'s not just my job, it\'s my passion.',
+        'image': 'https://i.imgur.com/OWNQbt2.jpg?1'
+    })
+
+    if errors:
+        raise Exception(errors)
+
+    cadence_molloy.skills = [html, css, javascript, react, ruby, software_engineering, python]
+
+    lacie_mae_blackwell, errors = user_schema.load({
+        'username': 'lacie_mae_blackwell',
+        'email': 'lacie@email',
+        'password': 'pass',
+        'password_confirmation': 'pass',
+        'name': 'Lacie-Mae Blackwell',
+        'occupation': 'Software Engineer',
+        'industry': 'Software Engineering',
+        'location': 'London, United Kingdom',
+        'description': 'I am fairly new in the world of tech, I have been working at my first software engineering job for just under 12 months and enjoy it immesly. I\'d love to meet up with some other women in tech as my currwent workplace is mainly male dominated. I also have a passion for art and the theatre.',
+        'image': 'https://i.imgur.com/fDLABkw.jpg'
+    })
+
+    if errors:
+        raise Exception(errors)
+
+    lacie_mae_blackwell.skills = [html, css, javascript, react]
+
+    meera_wu, errors = user_schema.load({
+        'username': 'meera_wu',
+        'email': 'meera@email',
+        'password': 'pass',
+        'password_confirmation': 'pass',
+        'name': 'Meera Wu',
+        'occupation': 'Senior Software Engineer',
+        'industry': 'Software Engineering',
+        'location': 'London, United Kingdom',
+        'description': 'I own a tech company in the center of London that specialises in the design of websites for High Dental Practices. ',
+        'image': 'https://i.imgur.com/ppL7NFu.jpg'
+    })
+
+    if errors:
+        raise Exception(errors)
+
+    meera_wu.skills = [html, css, javascript, react, python, mentoring, software_engineering, mentoring]
+
+    hallie_lim, errors = user_schema.load({
+        'username': 'hallie_lim',
+        'email': 'hallie@email',
+        'password': 'pass',
+        'password_confirmation': 'pass',
+        'name': 'Hallie Lim',
+        'occupation': 'Junior Software Engineer',
+        'industry': 'Software Engineering',
+        'location': 'London, United Kingdom',
+        'description': 'Looking to connect with and be inspired by other women in tech.',
+        'image': 'https://i.imgur.com/KV90Jra.jpg?1'
+    })
+
+    if errors:
+        raise Exception(errors)
+
+    hallie_lim.skills = [html, css, javascript, react, python, software_engineering]
 
     #EVENTS
 
@@ -188,7 +250,7 @@ with app.app_context():
         attending=[amy_wilson, joss_farmer, marie_middleton, kiki_farley, evie_rose_whelan]
     )
 
-    javscript_monthly = Event(
+    javascript_monthly = Event(
         date='13/10/2019',
         time='19:00',
         address='64–73 Minories, London',
@@ -258,7 +320,11 @@ with app.app_context():
 
     # ADD EVENTS
     db.session.add_all([
-        women_in_tech
+        women_in_tech,
+        javascript_monthly,
+        react_monthly,
+        software_engineer_women,
+        lady_tech
     ])
 
     # ADD EVENT COMMENTS
