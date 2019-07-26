@@ -2,6 +2,12 @@ from app import db, ma
 from marshmallow import fields
 from .base import BaseModel, BaseSchema
 
+attendees = db.Table(
+    'attendees',
+    db.Column('event_id', db.Integer, db.ForeignKey('events.id')),
+    db.Column('user_id', db.Integer, db.ForeignKey('users.id'))
+)
+
 class Event(db.Model, BaseModel):
 
     __tablename__ = 'events'
@@ -14,6 +20,7 @@ class Event(db.Model, BaseModel):
     details = db.Column(db.Text, nullable=False, unique=True)
     creator = db.relationship('User', backref='created_events')
     creator_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    attending = db.relationship('User', secondary=attendees, backref='attendees')
 
 class EventSchema(ma.ModelSchema, BaseSchema):
 
@@ -22,6 +29,7 @@ class EventSchema(ma.ModelSchema, BaseSchema):
 
     event_comments = fields.Nested('EventCommentSchema', many=True, exclude=('created_at', 'updated_at', 'event'))
     creator = fields.Nested('UserSchema', only=('id', 'username'))
+    attending = fields.Nested('UserSchema', many=True, only=('id', 'username'))
 
 class EventComment(db.Model, BaseModel):
 
