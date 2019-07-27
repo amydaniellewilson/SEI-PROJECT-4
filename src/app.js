@@ -10,6 +10,7 @@ import UsersIndex from './components/users/UsersIndex'
 import UserShow from './components/users/UserShow'
 import EventsIndex from './components/events/EventsIndex'
 import EventShow from './components/events/EventShow'
+import Login from './components/auth/Login'
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
       <main>
         <Navbar />
         <Switch>
+          <Route path="/login" component={Login} />
           <Route path="/events/:id" component={EventShow} />
           <Route path="/events" component={EventsIndex} />
           <Route path="/users/:id" component={UserShow} />

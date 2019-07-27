@@ -6,11 +6,20 @@ class EventShow extends React.Component {
     super()
 
     this.state = { event: null, creator: null }
+    this.handleAttend = this.handleAttend.bind(this)
   }
 
   componentDidMount() {
+    console.log(this.props.match.params.id)
     axios.get(`/api/events/${this.props.match.params.id}`)
       .then(res => this.setState({ event: res.data, creator: res.data.creator }))
+      .catch(err => console.log(err))
+  }
+
+  handleAttend(e) {
+    e.preventDefault()
+    axios.post(`/api/events/${this.props.match.params.id}/attending`)
+      .then(() => this.props.history.push(`/events/${this.props.match.params.id}`))
       .catch(err => console.log(err))
   }
 
@@ -38,7 +47,11 @@ class EventShow extends React.Component {
               <h4 className="title is-4">Where</h4>
               <p>{event.address} {event.postcode}</p>
               <hr />
-              <button className="button">Attend</button>
+              <button
+                className="button"
+                onClick={this.handleAttend}
+              >Attend
+              </button>
               <hr />
               <h4 className="title is-5">Created by {this.state.creator.username}</h4>
             </div>

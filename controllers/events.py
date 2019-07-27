@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, request, g
 from models.event import Event, EventSchema, EventComment, EventCommentSchema
+from lib.secure_route import secure_route
 
 api = Blueprint('events', __name__)
 event_schema = EventSchema()
@@ -31,6 +32,8 @@ def update(event_id):
     event = Event.query.get(event_id)
     if not event:
         return jsonify({'message': 'Not Found'}), 404
+    if event.creator != g.current_user:
+        return jsonify({'message': 'Unauthorized'})
     data = request.get_json()
     event, errors = event_schema.load(data, instance=event, partial=True)
     if errors:
@@ -68,6 +71,7 @@ def comment_delete(**kwargs):
     return '', 204
 
 @api.route('/events/<int:event_id>/attending', methods=['POST'])
+@secure_route
 def attending(event_id):
     event = Event.query.get(event_id)
     if not event:
