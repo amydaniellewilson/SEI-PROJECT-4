@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import Auth from '../lib/Auth'
 
 class EventShow extends React.Component {
   constructor() {
@@ -18,8 +19,10 @@ class EventShow extends React.Component {
 
   handleAttend(e) {
     e.preventDefault()
-    axios.post(`/api/events/${this.props.match.params.id}/attending`)
-      .then(() => this.props.history.push(`/events/${this.props.match.params.id}`))
+    axios.post(`/api/events/${this.props.match.params.id}/attending`, this.state.data, {
+      headers: { Authorization: `Bearer ${Auth.getToken()}`}
+    })
+      .then(() => this.props.history.push('/events'))
       .catch(err => console.log(err))
   }
 
