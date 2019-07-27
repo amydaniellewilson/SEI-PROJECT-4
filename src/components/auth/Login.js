@@ -1,16 +1,27 @@
 import React from 'react'
 import axios from 'axios'
+import Auth from '../lib/Auth'
 
 class Login extends React.Component{
   constructor() {
     super()
 
     this.state = { data: {} }
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  handleChange(e) {
+    console.log(e.target.value)
   }
 
   handleSubmit(e) {
     e.preventDefault()
-    console.log('login')
+    axios.post('/api/login', this.state.data)
+      .then(res => {
+        Auth.setToken(res.data.token)
+        this.props.history.push('/')
+      })
+      .catch(() => this.setState({ errors: 'Invalid Crendentials'}))
   }
 
 
@@ -18,12 +29,13 @@ class Login extends React.Component{
     return (
       <section className="section">
         <div className="container">
-          <form>
+          <form onClick={this.handleSubmit}>
             <h2 className="title">Login</h2>
             <div className="field">
               <label className="label">Email</label>
               <div className="control">
                 <input
+                  onChange={this.handleChange}
                   className="input"
                   name="email"
                   placeholder="Email"
@@ -34,6 +46,7 @@ class Login extends React.Component{
               <label className="label">Password</label>
               <div className="control">
                 <input
+                  onChange={this.handleChange}
                   className="input"
                   type="password"
                   name="password"
@@ -41,7 +54,7 @@ class Login extends React.Component{
                 />
               </div>
             </div>
-            <button onClick={this.handleSubmit}type="submit" className="button is-warning">Login</button>
+            <button type="submit" className="button is-warning">Login</button>
           </form>
         </div>
       </section>
