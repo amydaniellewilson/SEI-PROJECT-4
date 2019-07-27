@@ -67,11 +67,11 @@ def comment_delete(**kwargs):
     comment.remove()
     return '', 204
 
-# @api.route('/events/<int:event_id>/attending', methods=['POST'])
-# def attending(event_id):
-#     event = Event.query.get(event_id)
-#     if not event:
-#         return jsonify({'message': 'Not Found'}), 404
-#     event.attending.append(g.current_user)
-#     event.save()
-#     return event_schema.jsonify(event), 201
+@api.route('/events/<int:event_id>/attending', methods=['POST'])
+def attending(event_id):
+    event = Event.query.get(event_id)
+    if not event:
+        return jsonify({'message': 'Not Found'}), 404
+    event.attending.append(g.current_user)
+    event.save()
+    return event_schema.jsonify(event), 201

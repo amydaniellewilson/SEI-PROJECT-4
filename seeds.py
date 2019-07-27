@@ -240,21 +240,28 @@ with app.app_context():
     #EVENTS
 
     women_in_tech = Event(
+        name='Women in Tech',
         date='12/09/2019',
         time='18:00',
-        address='65 Cannon St, London ',
+        address='The Sugar Loaf, 65 Cannon St, London ',
         postcode='EC4N 5AA',
+        lat=51.51235,
+        lng=-0.09299,
         industry='Software Engineering',
         details='There will be a talk from esteemed Senior Developer Joss Farmer followed by cheese, wine and networking. All levels welcome, please join us for a fantastic evening.',
+        image='https://i.imgur.com/mQ30rT4.jpg',
         creator=joss_farmer,
         attending=[amy_wilson, joss_farmer, marie_middleton, kiki_farley, evie_rose_whelan]
     )
 
     javascript_monthly = Event(
+        name='Javascript Monthly',
         date='13/10/2019',
         time='19:00',
         address='64–73 Minories, London',
         postcode='EC3N 1JL',
+        lat=51.51032,
+        lng=-0.07454,
         industry='Software Engineering',
         details='An intresting reflection on Javascript and it\'s history. Food and drinks provided. Looking forward to seeing our regulars and welcoming any newcomers.',
         creator=crystal_crowther,
@@ -262,10 +269,13 @@ with app.app_context():
     )
 
     react_monthly = Event(
+        name='React Monthly',
         date='13/08/2019',
         time='17:00',
         address='40 Commercial St, Spitalfields, London',
         postcode='E1 6LP',
+        lat=51.51633,
+        lng=-0.07230,
         industry='Software Engineering',
         details='There will be a technical challange for anyone who wants to participate. We have a talk from Sue Longson, an entrepreneur in the tech sector and an inspiration to us all. ',
         creator=kiki_farley,
@@ -273,10 +283,13 @@ with app.app_context():
     )
 
     software_engineer_women = Event(
+        name='Software Engineering Women',
         date='30/08/2019',
         time='18:00',
         address='1 Garrick St, Covent Garden, London',
         postcode='WC2E 9BF',
+        lat=51.51128,
+        lng=-0.12568,
         industry='Software Engineering',
         details='A monthly meet-up for women in tech with a talk from an industry leader. Pizza, beers and networking always follow after the tech talk.',
         creator=meera_wu,
@@ -284,10 +297,13 @@ with app.app_context():
     )
 
     lady_tech = Event(
+        name='Lady Tech',
         date='01/10/2019',
         time='19:00',
         address='93 Charing Cross Rd, Soho, London',
         postcode='WC2H 0DP',
+        lat=51.51365,
+        lng=-0.12956,
         industry='Software Engineering',
         details='Free beer, great company. We talk tech, life and everything that goes along with it. Very casual meet-up with opportunities to network, mentor and gain mentors.',
         creator=crystal_crowther,

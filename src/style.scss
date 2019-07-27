@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa|EB+Garamond&display=swap');
+@import '~mapbox-gl/dist/mapbox-gl.css';
+
+* {
+  box-sizing: border-box;
+  font-family: 'Comfortaa', cursive;
+}
+
+#home {
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+}
+
+nav {
+  a.navbar-item:hover {
+    text-decoration: none !important;
+    color: inherit !important;
+  }
+  a.navbar-item:active {
+    text-decoration: none !important;
+    color: inherit !important;
+    background: none;
+  }
+  a.navbar-item:visited {
+    text-decoration: none !important;
+    color: inherit !important;
+    background: none !important;
+  }
+  .tribe {
+    font-size: 40px;
+    font-weight: bold;
+  }
+}
+
+.map {
+  height: 100vh;
+  width: 100vw;
+}

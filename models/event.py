@@ -12,12 +12,16 @@ class Event(db.Model, BaseModel):
 
     __tablename__ = 'events'
 
+    name = db.Column(db.String(30), nullable=False)
     date = db.Column(db.String(15), nullable=False)
     time = db.Column(db.String(15), nullable=False)
     address = db.Column(db.String(100), nullable=False)
     postcode = db.Column(db.String(15), nullable=False)
+    lat = db.Column(db.Float, nullable=False)
+    lng = db.Column(db.Float, nullable=False)
     industry = db.Column(db.String(50), nullable=False)
     details = db.Column(db.Text, nullable=False, unique=True)
+    image = db.Column(db.String(300), unique=True)
     creator = db.relationship('User', backref='created_events')
     creator_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     attending = db.relationship('User', secondary=attendees, backref='attendees')
