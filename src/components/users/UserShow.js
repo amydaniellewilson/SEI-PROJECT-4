@@ -8,6 +8,12 @@ class UserShow extends React.Component {
     this.state = { user: null }
   }
 
+  componentDidMount() {
+    axios.get(`/api/users/${this.props.match.params.id}`)
+      .then(res => this.setState({ user: res.data }))
+      .catch(err => console.log(err))
+  }
+
   render() {
     return(
       <div>SHOW</div>

@@ -21,12 +21,12 @@ class User(db.Model, BaseModel):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(128), nullable=False, unique=True)
     password_hash = db.Column(db.String(128), nullable=False)
-    name = db.Column(db.String(50), nullable=False)
-    occupation = db.Column(db.String(50), nullable=False)
-    industry = db.Column(db.String(50), nullable=False)
-    location = db.Column(db.String(50), nullable=False)
+    name = db.Column(db.String(50))
+    occupation = db.Column(db.String(50))
+    industry = db.Column(db.String(50))
+    location = db.Column(db.String(50))
     description = db.Column(db.String(300))
-    image = db.Column(db.Text, nullable=False, unique=True)
+    image = db.Column(db.Text, unique=True)
     skills = db.relationship('Skill', secondary=user_skills, backref='users')
 
     @hybrid_property
