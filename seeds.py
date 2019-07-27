@@ -279,6 +279,7 @@ with app.app_context():
         lng=-0.07230,
         industry='Software Engineering',
         details='There will be a technical challange for anyone who wants to participate. We have a talk from Sue Longson, an entrepreneur in the tech sector and an inspiration to us all. ',
+        image='https://i.imgur.com/EYi8gxD.jpg',
         creator=kiki_farley,
         attending=[amy_wilson, crystal_crowther, marie_middleton, kiki_farley, onur_soto]
     )
@@ -293,6 +294,7 @@ with app.app_context():
         lng=-0.12568,
         industry='Software Engineering',
         details='A monthly meet-up for women in tech with a talk from an industry leader. Pizza, beers and networking always follow after the tech talk.',
+        image='https://i.imgur.com/RoWFU0z.jpg',
         creator=meera_wu,
         attending=[amy_wilson, crystal_crowther, meera_wu, marie_middleton, kiki_farley, onur_soto]
     )
@@ -307,6 +309,7 @@ with app.app_context():
         lng=-0.12956,
         industry='Software Engineering',
         details='Free beer, great company. We talk tech, life and everything that goes along with it. Very casual meet-up with opportunities to network, mentor and gain mentors.',
+        image='https://i.imgur.com/pwXDIC6.jpg',
         creator=crystal_crowther,
         attending=[amy_wilson, crystal_crowther, joss_farmer, marie_middleton, kiki_farley, onur_soto]
     )
