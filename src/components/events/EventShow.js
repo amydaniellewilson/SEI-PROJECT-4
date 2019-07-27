@@ -11,7 +11,6 @@ class EventShow extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props.match.params.id)
     axios.get(`/api/events/${this.props.match.params.id}`)
       .then(res => this.setState({ event: res.data, creator: res.data.creator }))
       .catch(err => console.log(err))
@@ -22,11 +21,12 @@ class EventShow extends React.Component {
     axios.post(`/api/events/${this.props.match.params.id}/attending`, this.state.data, {
       headers: { Authorization: `Bearer ${Auth.getToken()}`}
     })
-      .then(() => this.props.history.push('/events'))
+      .then(() => this.props.history.push(`/events/${this.props.match.params.id}`))
       .catch(err => console.log(err))
   }
 
   render() {
+    console.log(this.state.event)
     if (!this.state.event) return null
     const { event } = this.state
     return (
@@ -39,6 +39,9 @@ class EventShow extends React.Component {
               <figure className="image">
                 <img src={event.image} alt={event.name} />
               </figure>
+              <hr />
+              <h4 className="title is-4">Attending</h4>
+              {this.state.event.attending.map((attendee, i)  => ( <h3 key={i}> {attendee.username} </h3> ))}
             </div>
             <div className="column is-half">
               <h4 className="title is-4">Details</h4>

@@ -264,6 +264,7 @@ with app.app_context():
         lng=-0.07454,
         industry='Software Engineering',
         details='An intresting reflection on Javascript and it\'s history. Food and drinks provided. Looking forward to seeing our regulars and welcoming any newcomers.',
+        image='https://i.imgur.com/czZi01s.jpg',
         creator=crystal_crowther,
         attending=[amy_wilson, crystal_crowther, marie_middleton, kiki_farley, onur_soto]
     )
