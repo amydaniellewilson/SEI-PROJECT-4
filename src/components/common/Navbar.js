@@ -1,5 +1,5 @@
 import React from 'react'
-import  { Link } from 'react-router-dom'
+import  { Link, withRouter } from 'react-router-dom'
 import Auth from '../lib/Auth'
 
 class Navbar extends React.Component {
@@ -15,11 +15,11 @@ class Navbar extends React.Component {
     this.setState({ navbarOpen: !this.state.navbarOpen })
   }
 
-  // componentDidUpdate(prevProps) {
-  //   if (this.props.location.pathname !== prevProps.location.pathname) {
-  //     this.setState({ navbarOpen: false })
-  //   }
-  // }
+  componentDidUpdate(prevProps) {
+    if (this.props.location.pathname !== prevProps.location.pathname) {
+      this.setState({ navbarOpen: false })
+    }
+  }
 
   logout() {
     Auth.logout()
@@ -64,4 +64,4 @@ class Navbar extends React.Component {
   }
 }
 
-export default Navbar
+export default withRouter(Navbar)

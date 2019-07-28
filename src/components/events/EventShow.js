@@ -17,12 +17,20 @@ class EventShow extends React.Component {
   }
 
   handleAttend(e) {
+    console.log('handle attend fires')
     e.preventDefault()
     axios.post(`/api/events/${this.props.match.params.id}/attending`, this.state.data, {
       headers: { Authorization: `Bearer ${Auth.getToken()}`}
     })
+      .then(console.log('attending list', this.state.event.attending))
       .then(() => this.props.history.push(`/events/${this.props.match.params.id}`))
+      .then(this.attendees())
       .catch(err => console.log(err))
+  }
+
+  attendees(){
+    axios.get(`/api/events/${this.props.match.params.id}/attending`)
+      .then(console.log(this.state.event.attending))
   }
 
   render() {
