@@ -32,7 +32,7 @@ with app.app_context():
         'industry': 'Software Engineering',
         'location': 'London, United Kingdom',
         'description': 'Currently studying Software Engineering at General Assembly in London. I will be embarking on my career within the tech industry from September 2019',
-        'image': 'https://i.imgur.com/9gKMYKc.jpg?1'
+        'image': 'https://i.imgur.com/WCByxUF.jpg'
     })
 
     if errors:
@@ -50,7 +50,7 @@ with app.app_context():
         'industry': 'Software Engineering',
         'location': 'London, United Kingdom',
         'description': 'I have worked in the tech industry for 25 years and currently hold a Senior Position at Sky.',
-        'image': 'https://i.imgur.com/Z8qAnLh.jpg?1'
+        'image': 'https://i.imgur.com/fdRdbj8.jpg'
     })
 
     if errors:
@@ -68,7 +68,7 @@ with app.app_context():
         'industry': 'Software Engineering',
         'location': 'London, United Kingdom',
         'description': 'I have recently graduated from a software engineering bootcamp. I am looking for a mentor to help me progress.',
-        'image': 'https://i.imgur.com/OtkwJs9.jpg?1'
+        'image': 'https://i.imgur.com/FmjQj3i.jpg'
     })
 
     if errors:
@@ -86,7 +86,7 @@ with app.app_context():
         'industry': 'Software Engineering',
         'location': 'London, United Kingdom',
         'description': 'After 10 years in the industy, I enjoy mentoring Junior Engineers to help them progress in their careers. I own my own start up tech company. ',
-        'image': 'https://i.imgur.com/QOTx7EU.jpg?1'
+        'image': 'https://i.imgur.com/7xpULi2.jpg'
     })
 
     if errors:
@@ -105,7 +105,7 @@ with app.app_context():
         'industry': 'Software Engineering',
         'location': 'London, United Kingdom',
         'description': 'I completed a Computer Science Degree and have been working in the tech industry for 5 years. ',
-        'image': 'https://i.imgur.com/J8gtJj2.jpg?1'
+        'image': 'https://i.imgur.com/wVauDWd.jpg'
     })
 
     if errors:
@@ -123,7 +123,7 @@ with app.app_context():
         'industry': 'Software Engineering',
         'location': 'London, United Kingdom',
         'description': 'I love coding, it\'s my passion and I have been lucky enough to have been coding professionally for the last 3 years. I am looking to do some coaching for new graduates to help the next wave of women in tech like I was helped myself.  ',
-        'image': 'https://i.imgur.com/7J7ILF9.jpg?1'
+        'image': 'https://i.imgur.com/Sr6ehbs.jpg?1'
     })
 
     if errors:
@@ -141,7 +141,7 @@ with app.app_context():
         'industry': 'Software Engineering',
         'location': 'London, United Kingdom',
         'description': 'I am starting a software engineering bootcamp at General Assembly and am looking to meet up with other women in this industry to help with my my learning process.',
-        'image': 'https://i.imgur.com/NS58G0a.jpg?1'
+        'image': 'https://i.imgur.com/7MdYBHs.jpg'
     })
 
     if errors:
@@ -175,7 +175,7 @@ with app.app_context():
         'industry': 'Software Engineering',
         'location': 'London, United Kingdom',
         'description': 'I have been in the software engineering and tech industry for 15 years since I was 16. It\'s not just my job, it\'s my passion.',
-        'image': 'https://i.imgur.com/OWNQbt2.jpg?1'
+        'image': 'https://i.imgur.com/2pev2OL.jpg'
     })
 
     if errors:
@@ -193,7 +193,7 @@ with app.app_context():
         'industry': 'Software Engineering',
         'location': 'London, United Kingdom',
         'description': 'I am fairly new in the world of tech, I have been working at my first software engineering job for just under 12 months and enjoy it immesly. I\'d love to meet up with some other women in tech as my currwent workplace is mainly male dominated. I also have a passion for art and the theatre.',
-        'image': 'https://i.imgur.com/fDLABkw.jpg'
+        'image': 'https://i.imgur.com/Aj74afo.jpg'
     })
 
     if errors:
@@ -211,7 +211,7 @@ with app.app_context():
         'industry': 'Software Engineering',
         'location': 'London, United Kingdom',
         'description': 'I own a tech company in the center of London that specialises in the design of websites for High Dental Practices. ',
-        'image': 'https://i.imgur.com/ppL7NFu.jpg'
+        'image': 'https://i.imgur.com/p2Zq1Ju.jpg'
     })
 
     if errors:
@@ -229,7 +229,7 @@ with app.app_context():
         'industry': 'Software Engineering',
         'location': 'London, United Kingdom',
         'description': 'Looking to connect with and be inspired by other women in tech.',
-        'image': 'https://i.imgur.com/KV90Jra.jpg?1'
+        'image': 'https://i.imgur.com/JmisaDv.jpg'
     })
 
     if errors:

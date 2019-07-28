@@ -20,14 +20,14 @@ class UsersIndex extends React.Component {
     if (!this.state.users) return null
     return (
       <section className="wrapper section">
-      <div className="container">
-        <div className="columns is-mobile is-multiline">
-        {this.state.users.map(user => (
-          <UserCard
-            key={user.id}
-            {...user}/>
-        ))}
-        </div>
+        <div className="container">
+          <div className="columns is-mobile is-multiline">
+            {this.state.users.map(user => (
+              <UserCard
+                key={user.id}
+                {...user}/>
+            ))}
+          </div>
         </div>
       </section>
     )
