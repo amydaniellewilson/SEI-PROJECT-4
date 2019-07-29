@@ -1,33 +1,47 @@
 import React from 'react'
 import axios from 'axios'
 
-class Register extends React.Component {
+class UserEdit extends React.Component {
   constructor() {
     super()
 
-    this.state = { data: {} }
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.state = { data: null }
     this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+
   }
 
-  handleChange(e) {
-    const data = { ...this.state.data, [e.target.name]: e.target.value}
+  componentDidMount() {
+    axios.get(`/api/users/${this.props.match.params.id}`)
+      .then(res => {
+        const data = res.data
+        delete data.password
+        this.setState({ data })
+      })
+      .catch(err => console.log(err.response))
+  }
+
+  handleChange({ target: { name, value } }) {
+    const data = { ...this.state.data, [name]: value }
     this.setState({ data })
   }
 
   handleSubmit(e) {
     e.preventDefault()
-    axios.post('/api/register', this.state.data)
-      .then(() => this.props.history.push('/login'))
+
+    axios.put(`/api/users/${this.props.match.params.id}`, this.state.data)
+      .then(() => this.props.history.push(`/users/${this.props.match.params.id}`))
       .catch(err => console.log(err.response))
   }
 
   render() {
+    if (!this.state.data) return null
+    const { data } = this.state
     return (
       <main className="section">
         <section className="container">
           <form onSubmit={this.handleSubmit}>
-            <h2 className="title">Register</h2>
+            <h2 className="title">Edit Your Profile</h2>
             <div className="field">
               <label className="label">Username</label>
               <div className="control">
@@ -36,6 +50,7 @@ class Register extends React.Component {
                   name="username"
                   placeholder="Username"
                   onChange={this.handleChange}
+                  value={data.username || ''}
                 />
               </div>
             </div>
@@ -47,33 +62,11 @@ class Register extends React.Component {
                   name="email"
                   placeholder="Email"
                   onChange={this.handleChange}
+                  value={data.email || ''}
                 />
               </div>
             </div>
-            <div className="field">
-              <label className="label">Password</label>
-              <div className="control">
-                <input
-                  className="input"
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  onChange={this.handleChange}
-                />
-              </div>
-            </div>
-            <div className="field">
-              <label className="label">Password Confirmation</label>
-              <div className="control">
-                <input
-                  className="input"
-                  type="password"
-                  name="password_confirmation"
-                  placeholder="Password Confirmation"
-                  onChange={this.handleChange}
-                />
-              </div>
-            </div>
+
             <div className="field">
               <label className="label">Name</label>
               <div className="control">
@@ -82,6 +75,7 @@ class Register extends React.Component {
                   name="name"
                   placeholder="Name"
                   onChange={this.handleChange}
+                  value={data.name || ''}
                 />
               </div>
             </div>
@@ -93,6 +87,7 @@ class Register extends React.Component {
                   name="occupation"
                   placeholder="Occupation"
                   onChange={this.handleChange}
+                  value={data.occupation || ''}
                 />
               </div>
             </div>
@@ -104,6 +99,7 @@ class Register extends React.Component {
                   name="industry"
                   placeholder="Industry"
                   onChange={this.handleChange}
+                  value={data.industry || ''}
                 />
               </div>
             </div>
@@ -115,6 +111,7 @@ class Register extends React.Component {
                   name="location"
                   placeholder="Location"
                   onChange={this.handleChange}
+                  value={data.location || ''}
                 />
               </div>
             </div>
@@ -126,6 +123,7 @@ class Register extends React.Component {
                   name="image"
                   placeholder="Image"
                   onChange={this.handleChange}
+                  value={data.image || ''}
                 />
               </div>
             </div>
@@ -137,6 +135,7 @@ class Register extends React.Component {
                   name="description"
                   placeholder="Description"
                   onChange={this.handleChange}
+                  value={data.description || ''}
                 />
               </div>
             </div>
@@ -148,4 +147,4 @@ class Register extends React.Component {
   }
 }
 
-export default Register
+export default UserEdit

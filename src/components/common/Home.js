@@ -1,7 +1,19 @@
 import React from 'react'
 
 const Home = () => {
-  return <img id="home" src="https://i.imgur.com/KKcwJM6.jpg?1" alt="Women"/>
+  return (
+    <main id="home-container">
+      <div id="home-tag">
+        <div id="home-title">
+      Tribe
+        </div>
+        <div id="home-blurb">
+      A Professional Networking Platform for Women
+        </div>
+      </div>
+      <img id="home" src="https://i.imgur.com/GXvslwV.jpg" alt="Women"/>
+    </main>
+  )
 }
 
 export default Home

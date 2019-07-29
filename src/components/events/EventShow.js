@@ -1,23 +1,24 @@
 import React from 'react'
 import axios from 'axios'
 import Auth from '../lib/Auth'
+import { Link } from 'react-router-dom'
 
 class EventShow extends React.Component {
   constructor() {
     super()
 
-    this.state = { event: null, creator: null }
+    this.state = { event: null }
     this.handleAttend = this.handleAttend.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
   }
 
   componentDidMount() {
     axios.get(`/api/events/${this.props.match.params.id}`)
-      .then(res => this.setState({ event: res.data, creator: res.data.creator }))
+      .then(res => this.setState({ event: res.data }))
       .catch(err => console.log(err))
   }
 
   handleAttend(e) {
-    console.log('handle attend fires')
     e.preventDefault()
     axios.post(`/api/events/${this.props.match.params.id}/attending`, this.state.data, {
       headers: { Authorization: `Bearer ${Auth.getToken()}`}
@@ -33,10 +34,22 @@ class EventShow extends React.Component {
       .then(console.log(this.state.event.attending))
   }
 
+  handleDelete() {
+    axios.delete(`/api/events/${this.props.match.params.id}`, {
+      headers: { Authorization: `${Auth.getToken()}` }
+    })
+      .then(() => this.props.history.push('/events'))
+      .catch(err => console.log(err.response))
+  }
+
+  isOwner() {
+    return Auth.isAuthenticated() && Auth.getPayload().sub === this.state.profile.event.id
+  }
+
+
   render() {
-    console.log(this.state.event)
-    if (!this.state.event) return null
     const { event } = this.state
+    if (!event) return null
     return (
       <main className="section">
         <div className="container">
@@ -47,6 +60,14 @@ class EventShow extends React.Component {
               <figure className="image">
                 <img src={event.image} alt={event.name} />
               </figure>
+              <br />
+              <Link className="button" to={`/events/edit/${event.id}`}
+              >
+              Edit
+              </Link>
+
+              <button onClick={this.handleDelete} className="button">Cancel</button>
+
               <hr />
               <h4 className="title is-4">Attending</h4>
               {this.state.event.attending.map((attendee, i)  => ( <h3 key={i}> {attendee.username} </h3> ))}
@@ -67,7 +88,7 @@ class EventShow extends React.Component {
               >Attend
               </button>
               <hr />
-              <h4 className="title is-5">Created by {this.state.creator.username}</h4>
+              <h4 className="title is-5">Created by {event.creator.username}</h4>
             </div>
           </div>
         </div>

@@ -314,6 +314,76 @@ with app.app_context():
         attending=[amy_wilson, crystal_crowther, joss_farmer, marie_middleton, kiki_farley, onur_soto]
     )
 
+    coding_for_women = Event(
+        name='Coding For Women',
+        date='29/10/2019',
+        time='19:00',
+        address='The Depot, Carpenters Mews, 1, North Road, London',
+        postcode='N7 9EF',
+        lat=51.54874,
+        lng=-0.12161,
+        industry='Software Engineering',
+        details='Come along for our monthly get together to chat everything coding and creating a support network for women in tech.',
+        image='https://i.imgur.com/VzrAaZW.jpg',
+        creator=meera_wu
+    )
+
+    women_dome = Event(
+        name='Women Dome',
+        date='11/10/2019',
+        time='17:00',
+        address='The Red Lion & Sun, 25 North Rd, Highgate, London',
+        postcode='N6 4BE',
+        lat=51.57305,
+        lng=-0.15012,
+        industry='Software Engineering',
+        details='This is a safe space for all women in tech in North London. We discuss the day to day struggles and triumphs of being a woman in tech. Snacks and drinks provided. Networking essential. ',
+        image='https://i.imgur.com/6heda8q.jpg',
+        creator=amy_wilson
+    )
+
+    coding_encore = Event(
+        name='Coding Encore',
+        date='12/08/2019',
+        time='18:00',
+        address='Canton Arms, 177 S Lambeth Rd, Stockwell, London',
+        postcode='SW8 1XP',
+        lat=51.47675,
+        lng=-0.12289,
+        industry='Software Engineering',
+        details='A great coding event for women in tech.',
+        image='https://i.imgur.com/XCWSk4a.jpg',
+        creator=amy_wilson
+    )
+
+    women_go = Event(
+        name='Women Go',
+        date='12/10/2019',
+        time='18:00',
+        address='The Riverside, Hamilton House, 5 St George Wharf, Vauxhall, London',
+        postcode='SW8 2LE',
+        lat=51.48566,
+        lng=-0.12615,
+        industry='Software Engineering',
+        details='Coding event, networking, wine and cheese. Tech!',
+        image='https://i.imgur.com/WcgbgUw.jpg',
+        creator=lacie_mae_blackwell
+    )
+
+    coding_masterglass = Event(
+        name='Coding Masterclass',
+        date='12/11/2019',
+        time='19:00',
+        address='The Ivy House, 40 Stuart Rd, London',
+        postcode='SE15 3BE',
+        lat=51.45849,
+        lng=-0.05237,
+        industry='Software Engineering',
+        details='Coding challange set at the beginning of the night, followed by a talk by a Senior Tech Lead and then networking with beers and pizza. ',
+        image='https://i.imgur.com/Wf5xwsl.jpg',
+        creator=joss_farmer
+    )
+
     # COMMENTS
 
     event_comment_one = EventComment(

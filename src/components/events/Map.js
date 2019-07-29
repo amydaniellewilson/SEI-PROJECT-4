@@ -1,5 +1,6 @@
 import React from 'react'
 import mapboxgl from 'mapbox-gl'
+// import MapboxGeocoder from 'mapbox-gl-geocoder'
 
 mapboxgl.accessToken = process.env.MAPBOX
 
@@ -15,12 +16,11 @@ class Map extends React.Component {
       container: this.mapDiv,
       style: 'mapbox://styles/mapbox/streets-v9',
       center: [-0.1, 51.5074],
-      zoom: 12
+      zoom: 11
     })
 
     this.markers.forEach(marker => marker.remove())
     this.markers = this.props.markers.map(point => {
-      console.log(point)
       return new mapboxgl.Marker()
         .setLngLat({ lat: point.lat, lng: point.lng })
         .addTo(this.map)
@@ -39,6 +39,7 @@ class Map extends React.Component {
         </main>`
           ))
     })
+
   }
 
   render() {

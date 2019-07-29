@@ -19,6 +19,7 @@ def show(event_id):
     return event_schema.jsonify(event), 200
 
 @api.route('/events', methods=['POST'])
+@secure_route
 def create():
     data = request.get_json()
     event, errors = event_schema.load(data)
@@ -28,6 +29,7 @@ def create():
     return event_schema.jsonify(event), 201
 
 @api.route('/events/<int:event_id>', methods=['PUT'])
+@secure_route
 def update(event_id):
     event = Event.query.get(event_id)
     if not event:
@@ -42,6 +44,7 @@ def update(event_id):
     return event_schema.jsonify(event), 202
 
 @api.route('/events/<int:event_id>', methods=['DELETE'])
+@secure_route
 def delete(event_id):
     event = Event.query.get(event_id)
     if not event:
@@ -50,6 +53,7 @@ def delete(event_id):
     return '', 204
 
 @api.route('/events/<int:event_id>/comments', methods=['POST'])
+@secure_route
 def comment_create(event_id):
     event = Event.query.get(event_id)
     if not event:
@@ -63,6 +67,7 @@ def comment_create(event_id):
     return comment_schema.jsonify(comment), 202
 
 @api.route('/events/<int:event_id>/comments/<int:event_comment_id>', methods=['DELETE'])
+@secure_route
 def comment_delete(**kwargs):
     comment = EventComment.query.get(kwargs['event_comment_id'])
     if not comment:

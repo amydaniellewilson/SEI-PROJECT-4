@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, request
 from models.user import User, UserSchema
+from lib.secure_route import secure_route
 
 
 api = Blueprint('users', __name__)
@@ -27,6 +28,7 @@ def create():
     return user_schema.jsonify(user), 201
 
 @api.route('/users/<int:user_id>', methods=['PUT'])
+@secure_route
 def update(user_id):
     user = User.query.get(user_id)
     if not user:
@@ -39,6 +41,7 @@ def update(user_id):
     return user_schema.jsonify(user), 202
 
 @api.route('/users/<int:user_id>', methods=['DELETE'])
+@secure_route
 def delete(user_id):
     user = User.query.get(user_id)
     if not user:

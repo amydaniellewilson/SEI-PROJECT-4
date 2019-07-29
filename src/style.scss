@@ -6,13 +6,43 @@
   font-family: 'Comfortaa', cursive;
 }
 
-#home {
-  height: 100vh;
-  width: 100vw;
-  background-size: cover;
+// HOME PAGE
+
+#home-container {
+  position: relative;
+  #home {
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+  }
+  #home-tag {
+    float: left;
+    position: absolute;
+    left: 25%;
+    top: 30%;
+    width: 50%;
+    z-index: 1000;
+    background-color: rgba(147, 172,  71, 0.5);
+    border-radius: 150px;
+    color: #FFFFFF;
+    font-weight: bold;
+    text-align: center;
+    #home-title {
+      font-size: 70px;
+    }
+    #home-blurb {
+      font-size: 40px;
+    }
+  }
 }
 
+// NAVBAR
 nav {
+  .tribe {
+    font-size: 40px;
+    font-weight: bold;
+    color: rgb(147, 172, 71);
+  }
   a.navbar-item:hover {
     text-decoration: none !important;
     color: inherit !important;
@@ -24,15 +54,11 @@ nav {
   }
   a.navbar-item:visited {
     text-decoration: none !important;
-    color: inherit !important;
     background: none !important;
-  }
-  .tribe {
-    font-size: 40px;
-    font-weight: bold;
   }
 }
 
+// MAP
 .map {
   height: 100vh;
   width: 100vw;
@@ -40,7 +66,7 @@ nav {
 
 
 
-// User Cards
+// USER CARDS
 $bodyFont: 'Open Sans', sans-serif;
 
 .wrapper {
@@ -110,10 +136,10 @@ $bodyFont: 'Open Sans', sans-serif;
     text-decoration: none;
 
     .job-title {
-        font-size: 1rem;
-        // line-height: 2.5rem;
-        color: #333;
-        font-weight: 300;
+      font-size: 1rem;
+      // line-height: 2.5rem;
+      color: #333;
+      font-weight: 300;
     }
   }
 }
@@ -144,4 +170,12 @@ $bodyFont: 'Open Sans', sans-serif;
   left: 0;
   transition-delay: 0.5s;
   opacity: 1;
+}
+
+
+// USER PROFILE SHOW
+
+.user-image {
+  border-radius: 25px;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.6);
 }
