@@ -34,40 +34,38 @@ class UserShow extends React.Component {
     const { user } = this.state
     return(
       <main className="section">
-        <div className="container">
-          <div className="columns">
-            <div className="column is-half">
-              <h2 className="title">{user.name}</h2>
-              <hr />
-              <h4 className="title is-4">Location</h4>
-              <p>{user.location}</p>
-              <hr/>
-              <h4 className="title is-4">Occupation</h4>
-              <p>{user.occupation}</p>
-              <hr />
-              <h4 className="title is-4">Industry</h4>
-              <p>{user.industry}</p>
-              <hr />
-              <h4 className="title is-4">Skills</h4>
-              <h3>{this.state.user.skills.map((skill, i)  => ( <p key={i}> {skill.skill} </p> ))}</h3>
-              <hr />
-              <h4 className="title is-4">About Me</h4>
-              <p>{user.description}</p>
-              <hr />
-            </div>
-            
-            <div className="column is-half">
-              <figure>
-                <img className="user-image" src={user.image} alt={user.name} />
-              </figure>
-              {this.isOwner() && <button onClick={this.handleDelete} className="button">Delete</button>}
-              {this.isOwner() && <Link
-                className="button"
-                to={`/users/edit/${user.id}`}
-              >
+        <div className="user-container">
+          <div className="user-details">
+            <h2 className="user-title">{user.name}</h2>
+            <br/>
+            <h4 className="title is-4">Location</h4>
+            <p>{user.location}</p>
+            <br/>
+            <h4 className="title is-4">Occupation</h4>
+            <p>{user.occupation}</p>
+            <br />
+            <h4 className="title is-4">Industry</h4>
+            <p>{user.industry}</p>
+            <br />
+            <h4 className="title is-4">Skills</h4>
+            <h3>{this.state.user.skills.map((skill, i)  => ( <p key={i}> {skill.skill} </p> ))}</h3>
+            <br />
+            <h4 className="title is-4">About Me</h4>
+            <p>{user.description}</p>
+            <br />
+          </div>
+
+          <div className="">
+            <figure>
+              <img className="user-image" src={user.image} alt={user.name} />
+            </figure>
+            {this.isOwner() && <button onClick={this.handleDelete} className="button del">Delete</button>}
+            {this.isOwner() && <Link
+              className="button edit"
+              to={`/users/edit/${user.id}`}
+            >
               Edit Profile
-              </Link>}
-            </div>
+            </Link>}
           </div>
         </div>
       </main>

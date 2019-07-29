@@ -384,6 +384,48 @@ with app.app_context():
         creator=joss_farmer
     )
 
+    coding_eden = Event(
+        name='Coding Eden',
+        date='02/11/2019',
+        time='17:00',
+        address='The Kings Arms, 251 Tooley St, London',
+        postcode='SE1 2JX',
+        lat=51.50222,
+        lng=-0.07703,
+        industry='Software Engineering',
+        details='A professional networking event for women in coding. ',
+        image='https://i.imgur.com/My9r0HQ.jpg',
+        creator=amy_wilson
+    )
+
+    coding_xanadu = Event(
+        name='Coding Xanadu',
+        date='02/08/2019',
+        time='18:30',
+        address='Ancient Foresters, 282 Southwark Park Rd, Bermondsey, London',
+        postcode='SE16 2HB',
+        lat=51.49231,
+        lng=-0.05946,
+        industry='Software Engineering',
+        details='Women get together to code. ',
+        image='https://i.imgur.com/16ClCOS.jpg',
+        creator=amy_wilson
+    )
+
+    crowd_of_women = Event(
+        name='Crowd of Women',
+        date='12/08/2019',
+        time='18:00',
+        address='The Britannia, 1 Allen St, Kensington, London',
+        postcode='W8 6UX',
+        lat=51.49712,
+        lng=-0.19461,
+        industry='Software Engineering',
+        details='A supportive environment for women in tech.',
+        image='https://i.imgur.com/zQm7u3t.jpg',
+        creator=amy_wilson
+    )
+
     # COMMENTS
 
     event_comment_one = EventComment(
@@ -395,7 +437,17 @@ with app.app_context():
     # ADD USERS
     db.session.add_all([
         amy_wilson,
-        joss_farmer
+        joss_farmer,
+        ines_alston,
+        crystal_crowther,
+        evie_rose_whelan,
+        kiki_farley,
+        onur_soto,
+        marie_middleton,
+        cadence_molloy,
+        lacie_mae_blackwell,
+        meera_wu,
+        hallie_lim
     ])
 
     # ADD SKILLS
