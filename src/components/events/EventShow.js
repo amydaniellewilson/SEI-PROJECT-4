@@ -13,6 +13,10 @@ class EventShow extends React.Component {
   }
 
   componentDidMount() {
+    this.getEvents()
+  }
+
+  getEvents() {
     axios.get(`/api/events/${this.props.match.params.id}`)
       .then(res => this.setState({ event: res.data }))
       .catch(err => console.log(err))
@@ -24,15 +28,14 @@ class EventShow extends React.Component {
       headers: { Authorization: `Bearer ${Auth.getToken()}`}
     })
       .then(console.log('attending list', this.state.event.attending))
-      .then(() => this.props.history.push(`/events/${this.props.match.params.id}`))
-      .then(this.attendees())
+      .then(this.getEvents())
       .catch(err => console.log(err))
   }
 
-  attendees(){
-    axios.get(`/api/events/${this.props.match.params.id}/attending`)
-      .then(console.log(this.state.event.attending))
-  }
+  // attendees(){
+  //   axios.get(`/api/events/${this.props.match.params.id}/attending`)
+  //     .then(console.log(this.state.event.attending))
+  // }
 
   handleDelete() {
     axios.delete(`/api/events/${this.props.match.params.id}`, {
@@ -50,6 +53,7 @@ class EventShow extends React.Component {
   render() {
     const { event } = this.state
     if (!event) return null
+    console.log(this.state.event.attending)
     return (
       <main className="section">
         <div className="container">
@@ -69,8 +73,12 @@ class EventShow extends React.Component {
               <button onClick={this.handleDelete} className="button">Cancel</button>
 
               <hr />
-              <h4 className="title is-4">Attending</h4>
-              {this.state.event.attending.map((attendee, i)  => ( <h3 key={i}> {attendee.username} </h3> ))}
+              <h4 className="event-title title is-4">Attending</h4>
+              {this.state.event.attending.length > 0 ?
+                this.state.event.attending.map((attendee, i)  => ( <h3 key={i}> {attendee.username} </h3> ))
+                :
+                <p>No one attending yet.</p>
+              }
             </div>
             <div className="column is-half">
               <h4 className="title is-4">Details</h4>

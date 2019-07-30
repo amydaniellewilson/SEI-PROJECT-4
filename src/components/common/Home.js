@@ -4,11 +4,11 @@ const Home = () => {
   return (
     <main id="home-container">
       <div id="home-tag">
-      <div id="home-blurb">
+        <div id="home-blurb">
     A Professional Networking Platform for Women
+        </div>
       </div>
-      </div>
-      <img id="home" src="https://i.imgur.com/GXvslwV.jpg" alt="Women"/>
+      <img id="home" src="https://i.imgur.com/wF76cO8.jpg" alt="Women"/>
     </main>
   )
 }

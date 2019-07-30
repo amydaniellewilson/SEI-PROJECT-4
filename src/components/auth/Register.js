@@ -24,126 +24,84 @@ class Register extends React.Component {
 
   render() {
     return (
-      <main className="section">
-        <section className="container">
-          <form onSubmit={this.handleSubmit}>
-            <h2 className="title">Register</h2>
-            <div className="field">
-              <label className="label">Username</label>
-              <div className="control">
-                <input
-                  className="input"
-                  name="username"
-                  placeholder="Username"
-                  onChange={this.handleChange}
-                />
-              </div>
-            </div>
-            <div className="field">
-              <label className="label">Email</label>
-              <div className="control">
-                <input
-                  className="input"
-                  name="email"
-                  placeholder="Email"
-                  onChange={this.handleChange}
-                />
-              </div>
-            </div>
-            <div className="field">
-              <label className="label">Password</label>
-              <div className="control">
-                <input
-                  className="input"
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  onChange={this.handleChange}
-                />
-              </div>
-            </div>
-            <div className="field">
-              <label className="label">Password Confirmation</label>
-              <div className="control">
-                <input
-                  className="input"
-                  type="password"
-                  name="password_confirmation"
-                  placeholder="Password Confirmation"
-                  onChange={this.handleChange}
-                />
-              </div>
-            </div>
-            <div className="field">
-              <label className="label">Name</label>
-              <div className="control">
-                <input
-                  className="input"
-                  name="name"
-                  placeholder="Name"
-                  onChange={this.handleChange}
-                />
-              </div>
-            </div>
-            <div className="field">
-              <label className="label">Occupation</label>
-              <div className="control">
-                <input
-                  className="input"
-                  name="occupation"
-                  placeholder="Occupation"
-                  onChange={this.handleChange}
-                />
-              </div>
-            </div>
-            <div className="field">
-              <label className="label">Industry</label>
-              <div className="control">
-                <input
-                  className="input"
-                  name="industry"
-                  placeholder="Industry"
-                  onChange={this.handleChange}
-                />
-              </div>
-            </div>
-            <div className="field">
-              <label className="label">Location</label>
-              <div className="control">
-                <input
-                  className="input"
-                  name="location"
-                  placeholder="Location"
-                  onChange={this.handleChange}
-                />
-              </div>
-            </div>
-            <div className="field">
-              <label className="label">Image</label>
-              <div className="control">
-                <input
-                  className="input"
-                  name="image"
-                  placeholder="Image"
-                  onChange={this.handleChange}
-                />
-              </div>
-            </div>
-            <div className="field">
-              <label className="label">Description</label>
-              <div className="control">
-                <input
-                  className="textarea"
-                  name="description"
-                  placeholder="Description"
-                  onChange={this.handleChange}
-                />
-              </div>
-            </div>
-            <button type="submit" className="button">Submit</button>
-          </form>
-        </section>
-      </main>
+      <section className="register-section">
+        <form className="register-wrap" onSubmit={this.handleSubmit}>
+          <h2 className="title">Register</h2>
+          <label>Username</label>
+          <input
+            className="reg-text"
+            name="username"
+            placeholder="Username"
+            onChange={this.handleChange}
+          />
+          <label>Email</label>
+          <input
+            className="reg-text"
+            name="email"
+            placeholder="Email"
+            onChange={this.handleChange}
+          />
+          <label>Password</label>
+          <input
+            className="reg-text"
+            type="password"
+            name="password"
+            placeholder="Password"
+            onChange={this.handleChange}
+          />
+          <label>Password Confirmation</label>
+          <input
+            className="reg-text"
+            type="password"
+            name="password_confirmation"
+            placeholder="Password Confirmation"
+            onChange={this.handleChange}
+          />
+          <label>Name</label>
+          <input
+            className="reg-text"
+            name="name"
+            placeholder="Name"
+            onChange={this.handleChange}
+          />
+          <label className="label">Occupation</label>
+          <input
+            className="reg-text"
+            name="occupation"
+            placeholder="Occupation"
+            onChange={this.handleChange}
+          />
+          <label>Industry</label>
+          <input
+            className="reg-text"
+            name="industry"
+            placeholder="Industry"
+            onChange={this.handleChange}
+          />
+          <label>Location</label>
+          <input
+            className="reg-text"
+            name="location"
+            placeholder="Location"
+            onChange={this.handleChange}
+          />
+          <label>Image</label>
+          <input
+            className="reg-text"
+            name="image"
+            placeholder="Image"
+            onChange={this.handleChange}
+          />
+          <label>Description</label>
+          <input
+            className="reg-text"
+            name="description"
+            placeholder="Description"
+            onChange={this.handleChange}
+          />
+          <button type="submit" className="register-button">Submit</button>
+        </form>
+      </section>
     )
   }
 }

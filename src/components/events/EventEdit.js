@@ -36,14 +36,12 @@ class EventEdit extends React.Component {
     console.log(this.state.data)
     if (!this.state.data) return null
     return (
-      <section className="section">
-        <div className="container">
-          <EventForm
-            data={this.state.data}
-            handleChange={this.handleChange}
-            handleSubmit={this.handleSubmit}
-          />
-        </div>
+      <section className="event-form-section">
+        <EventForm
+          data={this.state.data}
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
+        />
       </section>
     )
   }
