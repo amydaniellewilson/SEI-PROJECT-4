@@ -219,6 +219,19 @@ with app.app_context():
 
     meera_wu.skills = [html, css, javascript, react, python, mentoring, software_engineering, mentoring]
 
+    jessica_walker, errors = user_schema.load({
+        'username': 'jessica_walker',
+        'email': 'jessica@email',
+        'password': 'pass',
+        'password_confirmation': 'pass',
+        'name': 'Jessica Walker',
+        'occupation': 'Senior Sales Manager - Groups',
+        'industry': 'Hospitality',
+        'location': 'London, United Kingdom',
+        'description': 'I have been in the hotel industry for 8 years in various roles, the majority being event sales. ',
+        'image': 'https://i.imgur.com/p2Zq1Ju.jpg'
+    })
+
     hallie_lim, errors = user_schema.load({
         'username': 'hallie_lim',
         'email': 'hallie@email',
@@ -370,7 +383,7 @@ with app.app_context():
         creator=lacie_mae_blackwell
     )
 
-    coding_masterglass = Event(
+    coding_masterclass = Event(
         name='Coding Masterclass',
         date='12/11/2019',
         time='19:00',
@@ -424,6 +437,20 @@ with app.app_context():
         details='A supportive environment for women in tech.',
         image='https://i.imgur.com/zQm7u3t.jpg',
         creator=amy_wilson
+    )
+
+    women_sales = Event(
+        name='Women in Sales',
+        date='12/08/2019',
+        time='18:00',
+        address='Hilton Metropole, 225 Edgware Rd, Paddington, London',
+        postcode='W2 1JU',
+        lat=51.51958,
+        lng=-0.17053,
+        industry='Sales Management',
+        details='Any level welcome from Senior Sales Managers to Juniors or aspiring. A safe space for women in sales, specifically in the hotel sector. We will have a talk from esteemed Senior Sales Manager for Groups - Jessica Walker followed by networking. Snacks and drinks provided. ',
+        image='https://i.imgur.com/pxA1EaL.jpg',
+        creator=jessica_walker
     )
 
     # COMMENTS

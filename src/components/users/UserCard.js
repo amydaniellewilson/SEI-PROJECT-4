@@ -6,7 +6,7 @@ const UserCard = ({ name, occupation, image, location, id}) => {
     <Link to={`/users/${id}`}>
       <div className="card-wrapper">
         <div className="card-wrap profile">
-          <div className="column is-one-quarter-desktop is-one-third-tablet is-half-mobile">
+          <div className="card-outside column is-one-quarter-desktop is-one-third-tablet is-half-mobile">
             <div className="card-image profile-img--two">
               <img src={image} alt={name} />
             </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 import mapboxgl from 'mapbox-gl'
-// import MapboxGeocoder from 'mapbox-gl-geocoder'
+import MapboxGeocoder from 'mapbox-gl-geocoder'
 
 mapboxgl.accessToken = process.env.MAPBOX
 
@@ -39,7 +39,12 @@ class Map extends React.Component {
         </main>`
           ))
     })
-
+    // this.map.addControl(new MapboxGeocoder({
+    //   accessToken: mapboxgl.accessToken,
+    //   country: 'gb',
+    //   city: 'london'
+    // }), 'top-left')
+    // this.map.addControl(new mapboxgl.NavigationControl(), 'top-left')
   }
 
   render() {

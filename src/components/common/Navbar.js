@@ -28,7 +28,7 @@ class Navbar extends React.Component {
 
   render() {
     return (
-      <nav className="navbar">
+      <nav className="navbar is-fixed">
         <div className="navbar-brand">
           <Link to="/" className="tribe navbar-item" >Tribe</Link>
 

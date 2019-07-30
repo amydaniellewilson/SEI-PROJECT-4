@@ -51,11 +51,10 @@ class UserShow extends React.Component {
             <h3>{this.state.user.skills.map((skill, i)  => ( <p key={i}> {skill.skill} </p> ))}</h3>
             <br />
             <h4 className="title is-4">About Me</h4>
-            <p>{user.description}</p>
+            <p id="about-me">{user.description}</p>
             <br />
           </div>
-
-          <div className="">
+          <div>
             <figure>
               <img className="user-image" src={user.image} alt={user.name} />
             </figure>
