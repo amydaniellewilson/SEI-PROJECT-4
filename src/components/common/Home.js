@@ -8,7 +8,7 @@ const Home = () => {
     A Professional Networking Platform for Women
         </div>
       </div>
-      <img id="home" src="https://i.imgur.com/wF76cO8.jpg" alt="Women"/>
+      <img id="home" src="https://i.imgur.com/GXvslwV.jpg" alt="Women"/>
     </main>
   )
 }
