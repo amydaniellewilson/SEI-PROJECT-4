@@ -49,6 +49,6 @@ module.exports = {
     new CopyWebpackPlugin([
       { from: './src/assets', to: 'assets' }
     ]),
-    new Dotenv()
+    process.env.NODE_ENV === 'production' ? new webpack.EnvironmentPlugin({...process.env}) : new Dotenv()
   ]
 }
