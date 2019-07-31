@@ -46,14 +46,12 @@ class NewEvent extends React.Component {
 
   render() {
     return (
-      <section className="section">
-        <div className="container">
-          <EventForm
-            data={this.state.data}
-            handleChange={this.handleChange}
-            handleSubmit={this.handleSubmit}
-          />
-        </div>
+      <section className="event-form-section">
+        <EventForm
+          data={this.state.data}
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
+        />
       </section>
     )
   }
